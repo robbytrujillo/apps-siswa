@@ -1,6 +1,7 @@
 <div class="card">
   <div class="card-header">
-    <a href="<?= base_url('siswa/tambah') ?>" class="btn btn-primary btn-sm"><i class="fas fa-plus">Tambah Siswa</i></a>
+    <a href="<?= base_url('siswa/tambah') ?>" class="btn btn-primary btn-sm
+    "><i class="fas fa-plus">Tambah Siswa</i></a>
         </div>
         <!-- /.card-header -->
             <div class="card-body">
