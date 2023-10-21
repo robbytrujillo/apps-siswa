@@ -1,4 +1,4 @@
-<form action="">
+<form action="<?= base_url('siswa/tambah_aksi') ?>">
     <div class="form-group">
         <label>Nama Siswa</label>
         <input type="text" name="nama_siswa" class="form-control">
