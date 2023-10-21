@@ -81,4 +81,16 @@ class Siswa extends CI_Controller {
         $this->form_validation->set_rules('alamat_siswa', 'Alamat Siswa', 'required', array ('required' => '%s harus diisi !!'));
         $this->form_validation->set_rules('nomor_telepon', 'Nomor Telepon', 'required', array ('required' => '%s harus diisi !!'));
     }
+
+    public function delete($id) {
+        $where = array('id_siswa' => $id);
+
+        $this->siswa_model->delete($where, 'tbl_siswa');
+        $this->session->set_flashdata('pesan', '<div class="alert alert-success alert-dismissible fade show" role="alert">
+        Data Berhasil Dihapus!
+       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+       <span aria-hidden="true">&times;</span></button>
+       </div>');
+        redirect('siswa');  
+    }
 }

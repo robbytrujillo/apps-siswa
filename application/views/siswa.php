@@ -31,7 +31,7 @@
                     <td><?= $ssw->nomor_telepon ?></td>
                     <td>
                         <button data-toggle="modal" data-target="#edit<?= $ssw->id_siswa ?>" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></button>
-                        <button  class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
+                        <a href="<?= base_url('siswa/delete/' . $ssw->id_siswa) ?>"  class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda yakin akan menghapus data ini?')"><i class="fas fa-trash"></i></a>
                     </td>
                   </tr>
                   </tbody>
