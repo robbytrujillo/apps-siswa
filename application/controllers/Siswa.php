@@ -25,4 +25,60 @@ class Siswa extends CI_Controller {
         $this->load->view('tambah_siswa'); 
         $this->load->view('stemplates/footer'); 
     }
+    public function tambah_aksi() {
+        // $data['title'] = 'Tambah Aksi';
+
+        $this->_rules();
+        
+        if ($this->form_validation->run() == false) {
+            $this->tambah();
+        } else {
+            $data = array(
+                'nama_siswa' => $this->input->post('nama_siswa'),
+                'kelas_siswa' => $this->input->post('kelas_siswa'),
+                'alamat_siswa' => $this->input->post('alamat_siswa'),
+                'nomor_telepon' => $this->input->post('nomor_telepon'),
+            );
+
+            $this->siswa_model->insert_data($data, 'tbl_siswa');
+            $this->session->set_flashdata('pesan', '<div class="alert alert-success alert-dismissible fade show" role="alert">
+                                                     <strong>Data Berhasil Di Tambahkan!
+                                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span></button>
+                                                    </div>');
+            redirect('siswa');                                        
+        }
+    }
+
+    public function edit($id_siswa) {
+        $this->_rules();
+
+        if ($this->form_validation->run() == FALSE) {
+            $this->index();
+        } else {    
+            $data = array(
+                'id_siswa' => $id_siswa,
+                'nama_siswa' => $this->input->post('nama_siswa'),
+                'kelas_siswa' => $this->input->post('kelas_siswa'),
+                'alamat_siswa' => $this->input->post('alamat_siswa'),
+                'nomor_telepon' => $this->input->post('nomor_telepon'),
+            );
+
+            $this->siswa_model->update_data($data, 'tbl_siswa');
+            $this->session->set_flashdata('pesan', '<div class="alert alert-success alert-dismissible fade show" role="alert">
+            Data Berhasil Diubah!
+           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+           <span aria-hidden="true">&times;</span></button>
+           </div>');
+            redirect('siswa');      
+        }
+    }
+
+    // fuction pesan error
+    public function _rules() {
+        $this->form_validation->set_rules('nama_siswa', 'Nama Siswa', 'required', array ('required' => '%s harus diisi !!'));
+        $this->form_validation->set_rules('kelas_siswa', 'Kelas Siswa', 'required', array ('required' => '%s harus diisi !!'));
+        $this->form_validation->set_rules('alamat_siswa', 'Alamat Siswa', 'required', array ('required' => '%s harus diisi !!'));
+        $this->form_validation->set_rules('nomor_telepon', 'Nomor Telepon', 'required', array ('required' => '%s harus diisi !!'));
+    }
 }
