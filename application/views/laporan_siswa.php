@@ -1,10 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Laporan Siswa</title>
+<html lang="en"><head>
+    <title>Document</title>
 </head><body>
+    <center><h1>Data Siswa</h1><br>
     <table>
         <tr>
             <th>No.</th>
@@ -15,13 +13,13 @@
         </tr>
         <?php $no = 1;
         foreach ($siswa as $ssw) : ?>
-        <tr>
-            <td><?= $no++ ?></td>
-            <td><?= $ssw->nama_siswa ?></td>
-            <td><?= $ssw->kelas_siswa ?></td>
-            <td><?= $ssw->alamat_siswa ?></td>
-            <td><?= $ssw->nomor_telepon ?></td>
-        </tr>
+            <tr>
+                <td><?= $no++ ?></td>
+                <td><?= $ssw->nama_siswa ?></td>
+                <td><?= $ssw->kelas_siswa ?></td>
+                <td><?= $ssw->alamat_siswa ?></td>
+                <td><?= $ssw->nomor_telepon ?></td>
+            </tr>
         <?php endforeach ?>
-    </table>
+    </table></center>
 </body></html>

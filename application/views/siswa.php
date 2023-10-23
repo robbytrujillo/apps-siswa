@@ -2,11 +2,11 @@
 <div class="card">
   <div class="card-header">
     <a href="<?= base_url('siswa/tambah') ?>" class="btn btn-primary btn-sm
-    "><i class="fas fa-plus">Tambah Siswa</i></a>
+    "><i class="fas fa-plus"> Tambah Siswa</i></a>
     <a href="<?= base_url('siswa/print') ?>" class="btn btn-info btn-sm
-    "><i class="fas fa-print">Print</i></a>
+    "><i class="fas fa-print"> Print</i></a>
     <a href="<?= base_url('siswa/pdf') ?>" class="btn btn-success btn-sm
-    "><i class="fas fa-file">Export Pdf</i></a>
+    "><i class="fas fa-file"> Export Pdf</i></a>
         </div>
         <!-- /.card-header -->
             <div class="card-body">
