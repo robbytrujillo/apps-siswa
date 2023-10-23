@@ -74,6 +74,27 @@ class Siswa extends CI_Controller {
         }
     }
 
+    public function print() {
+        $data['siswa'] = $this->siswa_model->get_data('tbl_siswa')->result();
+        $this->load->view('print_siswa', $data);
+    }
+
+    public function pdf() {
+        $this->load->library('dompdf_gen');
+
+        $data['siswa'] = $this->siswa_model->get_data('tbl_siswa')->result();
+        $this->load->view('laporan_siswa', $data);
+
+        $paper_size = 'A4';
+        $orientation = 'potrait';
+        $html = $this->output->get_output();
+        $this->dompdf->set_paper($paper_size, $orientation);
+
+        $this->dompdf->load_html($html);
+        $this->dompdf->render();
+        $this->dompdf->stream('laporan_siswa.pdf', array('Attachment' => 0));
+    }
+
     // fuction pesan error
     public function _rules() {
         $this->form_validation->set_rules('nama_siswa', 'Nama Siswa', 'required', array ('required' => '%s harus diisi !!'));
@@ -86,7 +107,7 @@ class Siswa extends CI_Controller {
         $where = array('id_siswa' => $id);
 
         $this->siswa_model->delete($where, 'tbl_siswa');
-        $this->session->set_flashdata('pesan', '<div class="alert alert-success alert-dismissible fade show" role="alert">
+        $this->session->set_flashdata('pesan', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
         Data Berhasil Dihapus!
        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
        <span aria-hidden="true">&times;</span></button>
